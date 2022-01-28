@@ -4,7 +4,7 @@ package;
 import sys.FileSystem;
 import lime.app.Application;
 import flash.system.System;
-import android.AndroidTools;
+import android.*;
 #end
 
 class SUtil
