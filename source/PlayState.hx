@@ -1314,7 +1314,7 @@ class PlayState extends MusicBeatState
 
     #if (desktop || html5)
 	public function startVideo(name:String, autoEndSong:Bool = true, bgColor:FlxColor = FlxColor.BLACK, ?startStopped:Bool = false):Void {
-		#if (VIDEOS_ALLOWED && desktop)
+		#if VIDEOS_ALLOWED
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
 		#if sys
@@ -1406,7 +1406,6 @@ class PlayState extends MusicBeatState
         }
 	}
 	#end
-	startVideo('Uproar_Cutscene', true);
 
 	var dialogueCount:Int = 0;
 	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
