@@ -65,7 +65,7 @@ class MusicBeatState extends FlxUIState
 		trackedinputsNOTES = controls.trackedinputsNOTES;
 		controls.trackedinputsNOTES = [];
 
-                var camcontrol = new FlxCamera();
+                var camcontrol = new flixel.FlxCamera();
 	        FlxG.cameras.add(camcontrol);
 	        camcontrol.bgColor.alpha = 0;
 		androidc.cameras = [camcontrol];
