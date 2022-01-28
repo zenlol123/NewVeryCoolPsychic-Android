@@ -1313,7 +1313,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function startVideo(name:String, autoEndSong:Bool = true, bgColor:FlxColor = FlxColor.BLACK, ?startStopped:Bool = false):Void {
-		#if VIDEOS_ALLOWED
+		#if (VIDEOS_ALLOWED && desktop)
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
 		#if sys
