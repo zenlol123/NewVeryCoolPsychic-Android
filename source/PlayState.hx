@@ -1312,6 +1312,7 @@ class PlayState extends MusicBeatState
 		char.y += char.positionArray[1];
 	}
 
+    #if (desktop || html5)
 	public function startVideo(name:String, autoEndSong:Bool = true, bgColor:FlxColor = FlxColor.BLACK, ?startStopped:Bool = false):Void {
 		#if (VIDEOS_ALLOWED && desktop)
 		var foundFile:Bool = false;
@@ -1379,6 +1380,33 @@ class PlayState extends MusicBeatState
 			startCountdown();
 		}
 	}
+    #elseif android
+    public function startVideo(name:String, hasending:Bool = false, bgColor:FlxColor = FlxColor.BLACK):Void {
+		inCutscene = true;
+		var bg:FlxSprite = null;
+		bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, bgColor);
+		bg.scrollFactor.set();
+		bg.cameras = [camHUD];
+		add(bg);
+
+		var video = new WebViewPlayer(name);                                             
+    	video.finishCallback = function() {                                                               
+			remove(bg);
+			bg.destroy();
+
+			if(hasending) {
+            	startVideo('Uproar_Cutscene2', false, FlxColor.WHITE);
+			} else {
+				if(endingSong) {
+					endSong();
+				} else {
+					startCountdown();
+				}
+			}
+        }
+	}
+	#end
+	startVideo('Uproar_Cutscene', true);
 
 	var dialogueCount:Int = 0;
 	//You don't have to add a song, just saying. You can just do "startDialogue(dialogueJson);" and it should work
@@ -3206,9 +3234,11 @@ class PlayState extends MusicBeatState
 		#if html5
 		var array:Array<Dynamic> = ['dont delete this', 123];
 		var copiedArray:Array<Dynamic> = array.copy();
-		#else
+		#elseif desktop
 		startVideo('Uproar_Cutscene2', true, FlxColor.WHITE, true);
 		startVideo('Uproar_Cutscene', false, FlxColor.WHITE, false);
+		#elseif android
+		startVideo('Uproar_Cutscene', true, FlxColor.WHITE);//has ending
 		#end
 	}
 
