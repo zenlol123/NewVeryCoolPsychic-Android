@@ -59,7 +59,7 @@ class MainMenuState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		WeekData.setDirectoryFromWeek();
+		//WeekData.setDirectoryFromWeek();
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
@@ -74,7 +74,7 @@ class MainMenuState extends MusicBeatState
 		transOut = FlxTransitionableState.defaultTransOut;
 
 		persistentUpdate = persistentDraw = true;
-		var leStrings:Array<String> = CoolUtil.coolTextFile(Paths.txt('menuColors'));
+		var leStrings:Array<String> = CoolUtil.coolTextFile(SUtil.getPath() + Paths.txt('menuColors'));
 		for (i in 0...leStrings.length) {
 			colorsArray.push(Std.parseInt(leStrings[i]));
 		}
