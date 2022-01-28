@@ -36,12 +36,12 @@ class SUtil
         #if android
 
         if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
-                AndroidTools.requestPermissions([Permissions.READ_EXTERNAL_STORAGE, Permissions.WRITE_EXTERNAL_STORAGE, Permissions.MANAGE_EXTERNAL_STORAGE]);
+                AndroidTools.requestPermissions([Permissions.READ_EXTERNAL_STORAGE, Permissions.WRITE_EXTERNAL_STORAGE]);
         }  
 
         var grantedPermsList:Array<Permissions> = AndroidTools.getGrantedPermissions();    
 
-        if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.MANAGE_EXTERNAL_STORAGE)) {
+        if (!grantedPermsList.contains(Permissions.READ_EXTERNAL_STORAGE) || !grantedPermsList.contains(Permissions.WRITE_EXTERNAL_STORAGE)) {
                 if (AndroidTools.getSDKversion() > 23 || AndroidTools.getSDKversion() == 23) {
                         Application.current.window.alert("If you accepted the permisions for storage, good, you can continue, if you not the game can't run without storage permissions please grant them in app settings" + "\n" + "Press Ok To Close The App","Permissions");
                         System.exit(0);//Will close the game
