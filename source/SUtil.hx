@@ -56,18 +56,15 @@ class SUtil
                 {
                         FileSystem.createDirectory(storagePath + "/" + Application.current.meta.get("packageName"));
                 }
-                else if (!FileSystem.exists(storagePath + "/" + Application.current.meta.get("packageName") + "/files"))
+
+                if (!FileSystem.exists(storagePath + "/" + Application.current.meta.get("packageName") + "/files"))
                 {
                         FileSystem.createDirectory(storagePath + "/" + Application.current.meta.get("packageName") + "/files");
                 }
-                else if (!FileSystem.exists(SUtil.getPath() + "assets"))
+
+                if (!FileSystem.exists(SUtil.getPath() + "assets") && !FileSystem.exists(SUtil.getPath() + "mods"))
                 {
-                        Application.current.window.alert("Try copying assets/assets from apk to" + Application.current.meta.get("packageName") + "/files" + " In your internal storage createDirectory" + "\n" + "Press Ok To Close The App", "Instructions");
-                        System.exit(0);//Will close the game
-                }
-                else if (!FileSystem.exists(SUtil.getPath() + "mods"))
-                {
-                        Application.current.window.alert("Try copying assets/mods from apk to " + Application.current.meta.get("packageName") + "/files" + " In your internal storage createDirectory" + "\n" + "Press Ok To Close The App", "Instructions");
+                        Application.current.window.alert("Try copying assets/assets and assets/mods from apk to your internal storage app directory" + "\n" + "Press Ok To Close The App", "Instructions");
                         System.exit(0);//Will close the game
                 }
         }
