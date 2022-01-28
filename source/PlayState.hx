@@ -1312,7 +1312,7 @@ class PlayState extends MusicBeatState
 		char.y += char.positionArray[1];
 	}
 
-    #if (desktop || html5)
+        #if (VIDEOS_ALLOWED && !android)
 	public function startVideo(name:String, autoEndSong:Bool = true, bgColor:FlxColor = FlxColor.BLACK, ?startStopped:Bool = false):Void {
 		#if VIDEOS_ALLOWED
 		var foundFile:Bool = false;
@@ -1380,8 +1380,8 @@ class PlayState extends MusicBeatState
 			startCountdown();
 		}
 	}
-    #elseif android
-    public function startVideo(name:String, hasending:Bool = false, bgColor:FlxColor = FlxColor.BLACK):Void {
+        #elseif android
+        public function startVideo(name:String, hasending:Bool = false, bgColor:FlxColor = FlxColor.BLACK):Void {
 		inCutscene = true;
 		var bg:FlxSprite = null;
 		bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, bgColor);
@@ -1390,12 +1390,12 @@ class PlayState extends MusicBeatState
 		add(bg);
 
 		var video = new WebViewPlayer(name);                                             
-    	video.finishCallback = function() {                                                               
+    	        video.finishCallback = function() {                                                               
 			remove(bg);
 			bg.destroy();
 
 			if(hasending) {
-            	startVideo('Uproar_Cutscene2', false, FlxColor.WHITE);
+            	                startVideo('Uproar_Cutscene2', false, FlxColor.WHITE);
 			} else {
 				if(endingSong) {
 					endSong();
@@ -1403,7 +1403,7 @@ class PlayState extends MusicBeatState
 					startCountdown();
 				}
 			}
-        }
+                 }
 	}
 	#end
 
