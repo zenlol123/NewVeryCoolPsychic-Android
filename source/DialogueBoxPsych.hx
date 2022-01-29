@@ -303,7 +303,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 		    }
 		    #end
 
-			if(PlayerSettings.player1.controls.ACCEPT#if android || justTouched #end {
+			if(PlayerSettings.player1.controls.ACCEPT#if android || justTouched #end) {
 				if(!daText.finishedText) {
 					if(daText != null) {
 						daText.killTheTimer();
