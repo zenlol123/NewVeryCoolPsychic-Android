@@ -179,7 +179,7 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		if (controls.BACK) {
-			close();
+			MusicBeatState.resetState();
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 		}
 
