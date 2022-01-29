@@ -40,7 +40,7 @@ class OptionsState extends MusicBeatState
 				openSubState(new options.NotesSubState());
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
-                        case 'AndroidControls':
+                        case 'Android Controls':
 				MusicBeatState.switchState(new CastomAndroidControls());
 			case 'Graphics':
 				openSubState(new options.GraphicsSettingsSubState());
