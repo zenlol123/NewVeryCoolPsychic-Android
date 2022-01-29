@@ -27,7 +27,11 @@ class ClientPrefs {
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	public static var healthBarAlpha:Float = 1;
+        #if android
+	public static var controllerMode:Bool = true;
+        #else
 	public static var controllerMode:Bool = false;
+        #end
 	public static var uproarParticles:Bool = true;
 	public static var noteSkin:String = 'Default';
 	public static var gameplaySettings:Map<String, Dynamic> = [
